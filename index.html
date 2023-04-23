@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/png" href="tab-icon.png"/>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="code.js" defer></script>
+    <title>Financial Planner</title>
+</head>
+
+<body>
+    <div class="questions">
+    <h1>Compound Interest Calculator</h1>
+    </div>
+    
+    <label for="box">Initial Balance:</label>
+    <br>
+    <input class="box" type="text" id="balance" name="balance">
+    <br><br>
+    <label for="box">Monthly Contribution:</label>
+    <br>
+    <input class="box" type="text" id="contribution" name="contribution">
+    <br><br>
+    <label for="box">Interest:</label>
+    <br>
+    <input class="box" type="text" id="interest" name="interest">
+    <br><br>
+    <label for="box">Years:</label>
+    <br>
+    <input class="box" type="text" id="years" name="years">
+    <br><br>
+    <input class="next" type="button" value="Compound" onclick="redirectToGraph()" >
+</body>
+
+<script> function redirectToGraph() { window.location.href = "graph.html"; } </script>
+            
+<style>
+
+    .box {
+        height: 20px;
+        width: 220px;
+        background-color: #fffdd0;
+        border-color: #ffd63f;
+        
+    }
+    .next {
+        color: rgb(255, 255, 255);
+        background-color: #00c8ff;
+        height: 40px;
+        width: 150px;
+        border-color: #f5bc0d;
+
+    }
+
+    body {
+        text-align: center;
+        font-family: Georgia, serif;
+        color: #f5bc0d;
+        margin: 0;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-image: url("background.png");
+
+        }
+
+</style>
+</html>
