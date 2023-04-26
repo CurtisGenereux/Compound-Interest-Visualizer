@@ -34,7 +34,22 @@
     <input class="next" type="button" value="Compound" onclick="redirectToGraph()" >
 </body>
 
-<script> function redirectToGraph() { window.location.href = "graph.html"; } </script>
+
+
+<script>
+    function redirectToGraph() { 
+        var balanceValue = document.getElementById("balance").value;
+        var interestValue = document.getElementById("interest").value;
+        var yearsValue = document.getElementById("years").value;
+        var contributionValue = document.getElementById("contribution").value;
+        localStorage.setItem("balance", balanceValue);
+        localStorage.setItem("interest", interestValue);
+        localStorage.setItem("years", yearsValue);
+        localStorage.setItem("contribution", contributionValue);
+        window.location.href = "graph.html"; 
+        
+    } 
+</script>
             
 <style>
 
@@ -64,7 +79,7 @@
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        background-image: url("background.png");
+        background-image: url("compound2.png");
 
         }
 
