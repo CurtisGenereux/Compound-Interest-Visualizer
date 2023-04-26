@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" type="image/png" href="tab-icon.png"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="code.js" defer></script>
     <title>Compound</title>
 </head>
-
 <body>
     <div class="questions">
     <h1>Compound Interest Calculator</h1>
     </div>
-    
     <label for="box">Initial Balance:</label>
     <br>
     <input class="box" type="text" id="balance" name="balance">
@@ -34,8 +30,6 @@
     <input class="next" type="button" value="Compound" onclick="redirectToGraph()" >
 </body>
 
-
-
 <script>
     function redirectToGraph() { 
         var balanceValue = document.getElementById("balance").value;
@@ -52,7 +46,6 @@
 </script>
             
 <style>
-
     .box {
         height: 20px;
         width: 220px;
@@ -81,7 +74,6 @@
         transform: translate(-50%, -50%);
         background-image: url("background.png");
 
-        }
-
+    }
 </style>
 </html>
