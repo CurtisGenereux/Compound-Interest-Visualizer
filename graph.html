@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="graphCreator.js"></script>
     <link rel="shortcut icon" type="image/png" href="tab-icon.png"/>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <div id="container" style="width:100%; height:950px;"></div>
@@ -11,130 +12,41 @@
 </head>
 
 <style>
-
-body {
-    text-align: center;
-    font-family: Georgia, serif;
-    color: #f5bc0d;
-}
-
+    body {
+        text-align: center;
+        font-family: Georgia, serif;
+        color: #f5bc0d;
+    }
 </style>    
 
 <script>
 
 var balanceValue = localStorage.getItem("balance");
+var contributionValue = localStorage.getItem("contribution");
 var interestValue = localStorage.getItem("interest");
 var yearsValue = localStorage.getItem("years");
-var contributionValue = localStorage.getItem("contribution");
 
 localStorage.removeItem("balance");
 localStorage.removeItem("interest");
 localStorage.removeItem("years");
 localStorage.removeItem("contribution");
 
-console.log(balanceValue);
-
-var deezNuts = balanceValue;
-
-console.log(deezNuts);
-
-var currentBalance = parseInt(deezNuts);
-
-console.log(currentBalance);
-
-var monthlycontribution = contributionValue;
-//var currentBalance = balanceValue;
-var interestRate = interestValue/400; // 26% = 0.065, 20% = 0.050, 14% = 0.035, 10% = 0.025, 8% = 0.020, 4% = 0.010
+var currentBalance = parseInt(balanceValue);
+var monthlyContribution = contributionValue;
+var interestRate = interestValue/400;
 var balanceByYear = [];
 balanceByYear[0] = currentBalance;
-console.log(balanceByYear[0]);
 var k = 1;
-var retirementAge = 18;
-var retirementDistance = 12;
-
-
 
 for (var i = 0; i < yearsValue; i++) {
     for (var j = 0; j < 365; j++) {
-        currentBalance = currentBalance + currentBalance*(interestRate/100) + (monthlycontribution/30);
-        console.log(currentBalance);
+        currentBalance = currentBalance + currentBalance*(interestRate/100) + (monthlyContribution/30);
         balanceByYear[k] = currentBalance;
         k++;
     }
 }
 
-Highcharts.chart('container', {
-    chart: {
-            type: 'line'
-        },
-
-    title: {
-        text: "Growth Of $"
-    },
-
-    subtitle: {
-        text: ''
-    },
-
-    yAxis: {
-        title: {
-            text: ''
-        }
-    },
-
-    xAxis: {
-        accessibility: {
-            rangeDescription: 'Years'
-        }
-    },
-
-    tooltip: {
-    valueDecimals: 2,
-    valuePrefix: '$',
-
-    },
-
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-
-    plotOptions: {
-        series: {
-            color: '#f5bc0d',
-            marker: {
-                enabled: false
-            },
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 1
-        }
-    },
-    
-
-    series: [{
-        name: "Investment",
-        data: balanceByYear,
-    }],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
-            }
-        }]
-    }
-
-});
+createGraph();
 
 </script>
 </body>
