@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="tab-icon"/>
+    <link rel="shortcut icon" type="image/png" href="tab-icon.png"/>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <div id="container" style="width:100%; height:950px;"></div>
     <title>Compound</title>
@@ -19,33 +19,48 @@ body {
 }
 
 </style>    
+
 <script>
 
-var inputElement = document.getElementById('years');
+var balanceValue = localStorage.getItem("balance");
+var interestValue = localStorage.getItem("interest");
+var yearsValue = localStorage.getItem("years");
+var contributionValue = localStorage.getItem("contribution");
 
-console.log(inputElement);
+localStorage.removeItem("balance");
+localStorage.removeItem("interest");
+localStorage.removeItem("years");
+localStorage.removeItem("contribution");
 
+console.log(balanceValue);
 
+var deezNuts = balanceValue;
 
-var age = 17
-var monthlycontribution = 500;
-var currentBalance = 1200;
-var interestRate = 0.080 // 26% = 0.065, 20% = 0.050, 14% = 0.035, 10% = 0.025, 8% = 0.020, 4% = 0.010
+console.log(deezNuts);
+
+var currentBalance = parseInt(deezNuts);
+
+console.log(currentBalance);
+
+var monthlycontribution = contributionValue;
+//var currentBalance = balanceValue;
+var interestRate = interestValue/400; // 26% = 0.065, 20% = 0.050, 14% = 0.035, 10% = 0.025, 8% = 0.020, 4% = 0.010
 var balanceByYear = [];
 balanceByYear[0] = currentBalance;
+console.log(balanceByYear[0]);
 var k = 1;
 var retirementAge = 18;
 var retirementDistance = 12;
 
 
 
-for (var i = 0; i < retirementDistance; i++) {
+for (var i = 0; i < yearsValue; i++) {
     for (var j = 0; j < 365; j++) {
         currentBalance = currentBalance + currentBalance*(interestRate/100) + (monthlycontribution/30);
+        console.log(currentBalance);
         balanceByYear[k] = currentBalance;
         k++;
     }
-
 }
 
 Highcharts.chart('container', {
@@ -74,7 +89,7 @@ Highcharts.chart('container', {
     },
 
     tooltip: {
-    valueDecimals: 0,
+    valueDecimals: 2,
     valuePrefix: '$',
 
     },
@@ -101,7 +116,7 @@ Highcharts.chart('container', {
 
     series: [{
         name: "Investment",
-        data: balanceByYear
+        data: balanceByYear,
     }],
 
     responsive: {
