@@ -40,9 +40,10 @@ var k = 1;
 
 for (var i = 0; i < yearsValue; i++) {
     for (var j = 0; j < 365; j++) {
-        currentBalance = currentBalance + currentBalance*(interestRate/100) + (monthlyContribution/30);
+        currentBalance += currentBalance*(interestRate/100) + (monthlyContribution/30);
         balanceByYear[k] = currentBalance;
         k++;
+
     }
 }
 
