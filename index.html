@@ -40,7 +40,12 @@
         localStorage.setItem("interest", interestValue);
         localStorage.setItem("years", yearsValue);
         localStorage.setItem("contribution", contributionValue);
-        window.location.href = "graph.html"; 
+
+        if (balanceValue == "" || interestValue == "" || yearsValue == "" || contributionValue == "") {
+            console.log("fill in all boxes to create graph.");
+        } else {
+            window.location.href = "graph.html"; 
+        }
         
     } 
 </script>
@@ -73,6 +78,7 @@
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         background-image: url("background.png");
+        background-size: 100%;
 
     }
 </style>
