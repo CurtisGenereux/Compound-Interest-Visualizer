@@ -12,7 +12,7 @@ function createGraph() {
         },
 
         title: {
-            text: "Growth of Over " + yearsValue + " Years"
+            text: "Growth of $" + balanceValue + " Over " + yearsValue + " Years"
         },
 
         subtitle: {
