@@ -1,9 +1,14 @@
 function createGraph() {
-    const startYear = 0;
 
-    const yearDataArray = balanceByYear.map((value, index) => {
-        const year = startYear + (index / 365);
-        return [year, value];
+    var balanceAndYearData = balanceByYear.map((balance, day) => {
+        var year = day/365;
+        return [year, balance];
+    });
+
+    Highcharts.setOptions({
+        lang: {
+            thousandsSep: ','
+        }
     });
 
     Highcharts.chart('container', {
@@ -22,7 +27,7 @@ function createGraph() {
         yAxis: {
             title: {
                 text: ''
-            }
+            },
         },
 
         xAxis: {
@@ -31,18 +36,13 @@ function createGraph() {
             title: {
                 text: 'Years'
             },
-            labels: {
-                formatter: function () {
-                    return Math.round(this.value); 
-                }
-            },
             accessibility: {
                 rangeDescription: 'Years'
             }
         },
 
         tooltip: {
-            headerFormat: '<span style="color: #9e6a10;"><b>Investment:</b><br><span style="color: black;">',
+            headerFormat: '<span style="color: #9e6a10;"><b>Investment:</b><br><span style="color: #000000;">',
             pointFormat: 'Years: <b>{point.x:.2f}</b><br>Value: <b>${point.y:,.2f}</b>',
             valueDecimals: 2,
             valuePrefix: '$'
@@ -63,14 +63,14 @@ function createGraph() {
                 label: {
                     connectorAllowed: false
                 },
-                pointStart: startYear,
+                pointStart: 0,
                 pointIntervalUnit: 'year'
             }
         },
 
         series: [{
             name: "Investment",
-            data: yearDataArray,
+            data: balanceAndYearData,
         }],
 
     });
