@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="questions">
-    <h1>Compound Interest Calculator</h1>
+    <h1>Compound Interest Visualizer</h1>
     </div>
     <label for="box">Initial Balance:</label>
     <br>
@@ -41,8 +41,8 @@
         localStorage.setItem("years", yearsValue);
         localStorage.setItem("contribution", contributionValue);
 
-        if (balanceValue == "" || interestValue == "" || yearsValue == "" || contributionValue == "") {
-            console.log("fill in all boxes to create graph.");
+        if (balanceValue == "" || interestValue == "" || yearsValue == "") {
+            console.log("fill in the boxes to create the graph.");
         } else {
             window.location.href = "graph.html"; 
         }
@@ -51,6 +51,19 @@
 </script>
             
 <style>
+    body {
+        text-align: center;
+        font-family: Georgia, serif;
+        color: #f5bc0d;
+        margin: 0;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-image: url("background.png");
+        background-size: 100%;
+    }
     .box {
         height: 20px;
         width: 220px;
@@ -64,21 +77,6 @@
         height: 40px;
         width: 150px;
         border-color: #f5bc0d;
-
-    }
-
-    body {
-        text-align: center;
-        font-family: Georgia, serif;
-        color: #f5bc0d;
-        margin: 0;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        background-image: url("background.png");
-        background-size: 100%;
 
     }
 </style>
