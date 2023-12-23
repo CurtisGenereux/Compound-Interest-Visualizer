@@ -33,16 +33,16 @@ localStorage.removeItem("contribution");
 
 var currentBalance = parseInt(balanceValue);
 var monthlyContribution = contributionValue;
-var interestRate = interestValue/400;
+var interestRate = interestValue/365;
 var balanceByYear = [];
 balanceByYear[0] = currentBalance;
-var k = 1;
+var day = 1;
 
 for (var i = 0; i < yearsValue; i++) {
     for (var j = 0; j < 365; j++) {
         currentBalance += currentBalance*(interestRate/100) + (monthlyContribution/30);
-        balanceByYear[k] = currentBalance;
-        k++;
+        balanceByYear[day] = currentBalance;
+        day++;
 
     }
 }
